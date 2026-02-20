@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apex Rush | Car Game</title>
+  <link rel="stylesheet" href="styles/game.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Portfolio Build</p>
+        <h1>Apex Rush</h1>
+      </div>
+      <nav class="top-links">
+        <a href="index.html">Home</a>
+        <a href="v4.final.html">Legacy v4</a>
+      </nav>
+    </header>
+
+    <section class="game-layout">
+      <aside class="side-panel">
+        <h2>Driver Profile</h2>
+        <p>Handle: <strong id="player_handle">sudheerxdev</strong></p>
+        <p class="panel-copy">
+          Build score by maintaining speed, using nitro at the right moments, and chaining near misses.
+        </p>
+
+        <div class="meter-block">
+          <label for="health_fill">Car Integrity</label>
+          <div class="meter">
+            <span id="health_fill"></span>
+          </div>
+          <p id="health_text">100%</p>
+        </div>
+
+        <div class="meter-block">
+          <label for="nitro_fill">Nitro</label>
+          <div class="meter nitro">
+            <span id="nitro_fill"></span>
+          </div>
+          <p><span id="nitro_value">100</span>% ready</p>
+        </div>
+
+        <div class="session-card">
+          <h3>Current Run</h3>
+          <dl>
+            <div><dt>Score</dt><dd id="session_score">0</dd></div>
+            <div><dt>Distance</dt><dd id="session_distance">0.0 km</dd></div>
+            <div><dt>Time</dt><dd id="session_time">00:00</dd></div>
+            <div><dt>Rank</dt><dd id="session_rank">Rookie</dd></div>
+          </dl>
+        </div>
+
+        <div class="session-card">
+          <h3>Best Records</h3>
+          <dl>
+            <div><dt>Best Score</dt><dd id="best_score_value">0</dd></div>
+            <div><dt>Best Distance</dt><dd id="best_distance_value">0.0 km</dd></div>
+            <div><dt>Best Time</dt><dd id="best_time_value">00:00</dd></div>
+            <div><dt>Best Lap</dt><dd id="best_lap_value">--</dd></div>
+          </dl>
+          <p class="record-note">Saved locally for <span id="player_handle_record">sudheerxdev</span></p>
+        </div>
+
+        <div class="panel-actions">
+          <button id="startButton" class="primary-btn" type="button">Start Run</button>
+          <button id="restartButton" type="button">Restart</button>
+        </div>
+        <p class="control-copy">
+          Keyboard: Arrow keys/WASD to drive, Space for nitro, P to pause, R to restart.
+        </p>
+      </aside>
+
+      <section class="stage" aria-label="Race stage">
+        <div id="hud" class="hud">
+          <span class="chip">Speed <strong id="speed_value">0</strong> km/h</span>
+          <span class="chip">Score <strong id="score_value">0</strong></span>
+          <span class="chip">Combo <strong id="combo_value">x1.00</strong></span>
+          <span class="chip">Level <strong id="level_value">1</strong></span>
+          <span class="chip">Lap <strong id="lap_value">1</strong></span>
+        </div>
+
+        <canvas id="canvas" width="1024" height="576">
+          Your browser does not support HTML5 canvas.
+        </canvas>
+
+        <div id="eventFeed" class="event-feed"></div>
+
+        <div id="phaseOverlay" class="overlay">
+          <div class="overlay-card">
+            <p class="overlay-kicker">Apex Rush</p>
+            <h2 id="overlayTitle">Ready To Race</h2>
+            <p id="overlayMessage">
+              Push your score with clean overtakes, near misses, and efficient nitro usage.
+            </p>
+            <button id="overlayButton" class="primary-btn" type="button">Start Run</button>
+          </div>
+        </div>
+
+        <div id="countdown" class="countdown hidden">3</div>
+        <span id="mute" title="Toggle music"></span>
+      </section>
+    </section>
+
+    <section class="touch-controls" aria-label="Touch controls">
+      <button class="touch-btn" data-input="left" type="button">Left</button>
+      <button class="touch-btn" data-input="right" type="button">Right</button>
+      <button class="touch-btn" data-input="faster" type="button">Gas</button>
+      <button class="touch-btn" data-input="slower" type="button">Brake</button>
+      <button class="touch-btn nitro" data-input="nitro" type="button">Nitro</button>
+    </section>
+  </main>
+
+  <audio id="music">
+    <source src="music/racer.ogg">
+    <source src="music/racer.mp3">
+  </audio>
+
+  <script src="common.js"></script>
+  <script src="src/game/config.js"></script>
+  <script src="src/game/state.js"></script>
+  <script src="src/game/track.js"></script>
+  <script src="src/game/traffic.js"></script>
+  <script src="src/game/renderer.js"></script>
+  <script src="src/game/gameplay.js"></script>
+  <script src="src/game/ui.js"></script>
+  <script src="src/game/app.js"></script>
+</body>
+</html>

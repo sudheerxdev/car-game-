@@ -1,18 +1,90 @@
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Javascript Racer</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-</head> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Car Game | Apex Rush</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: #e2e8f0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.15), transparent 38%),
+        radial-gradient(circle at 90% 0%, rgba(249, 115, 22, 0.15), transparent 40%),
+        linear-gradient(170deg, #1e293b, #020617);
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
 
-<body> 
+    main {
+      width: min(820px, 95vw);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.5);
+    }
 
-  <ul>
-    <li><a href='v1.straight.html'>Version 1 - Straight</a></li>
-    <li><a href='v2.curves.html'>Version 2 - Curves</a></li>
-    <li><a href='v3.hills.html'>Version 3 - Hills</a></li>
-    <li><a href='v4.final.html'>Version 4 - Final</a></li>
-  </ul>
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+    }
 
-</body> 
+    p {
+      margin: 0 0 16px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .link-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: 18px;
+    }
+
+    a {
+      display: block;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(30, 41, 59, 0.8);
+      color: #e2e8f0;
+      border-radius: 10px;
+      text-decoration: none;
+      padding: 12px;
+      font-weight: 700;
+    }
+
+    a:hover {
+      border-color: #22d3ee;
+      transform: translateY(-1px);
+    }
+
+    .primary {
+      border: none;
+      background: linear-gradient(90deg, #f97316, #fb923c);
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Apex Rush</h1>
+    <p>
+      Upgraded arcade racing game with modular structure, combo scoring, difficulty scaling, nitro management,
+      and persistent local records.
+    </p>
+    <p>Built by <strong>sudheerxdev</strong></p>
+
+    <div class="link-grid">
+      <a class="primary" href="game.html">Play Enhanced Game</a>
+      <a href="v4.final.html">Legacy Version 4</a>
+      <a href="v3.hills.html">Legacy Version 3</a>
+      <a href="v2.curves.html">Legacy Version 2</a>
+      <a href="v1.straight.html">Legacy Version 1</a>
+    </div>
+  </main>
+</body>
 </html>

@@ -1,79 +1,77 @@
-<img width="600" height="262" alt="image" src="https://github.com/user-attachments/assets/906c75a3-fa41-4a2b-8f6e-a1abe8da9bfd" />
+# Apex Rush - Car Racing Game
 
+Portfolio-focused 2D arcade racing game built with plain HTML, CSS, and JavaScript.
 
+The repository now includes:
+- `game.html`: enhanced and structured version for production/portfolio usage
+- `v1` to `v4`: original progressive versions kept for reference
 
-🚗 Car Racing Game
-A simple and fun 2D car racing game built using HTML, CSS, and JavaScript. The player controls a car on a road, dodging traffic and trying to score the highest possible points.
+Author: `sudheerxdev`
 
-🔗 Live Demo
-👉 Click here to play
-https://sudheerrrrit.github.io/car-game-/  
+## Live Demo
 
+If this repository is deployed with GitHub Pages, open:
 
+`https://sudheerxdev.github.io/car-game-/game.html`
 
-🖼️ Screenshots
+## What Was Upgraded
 
+- Refactored monolithic script into modular runtime files under `src/game/`
+- Added a proper game state flow: `menu -> countdown -> running -> paused -> gameover`
+- Added nitro system with drain/recovery behavior
+- Added car integrity (health) and damage handling
+- Added combo and near-miss scoring mechanics
+- Added dynamic difficulty progression over time
+- Added persistent local records (best score, distance, time, lap)
+- Added modern responsive layout and touch controls
+- Kept legacy versions available for comparison
 
-<img width="600" height="262" alt="image" src="https://github.com/user-attachments/assets/559b375d-6a74-460e-a14f-e7b8ade6a2a9" />  
+## Controls
 
+- Move: `Left/Right Arrow` or `A/D`
+- Accelerate: `Up Arrow` or `W`
+- Brake: `Down Arrow` or `S`
+- Nitro: `Space`
+- Pause/Resume: `P`
+- Restart run: `R`
+- Start run: `Enter` or on-screen button
 
+## Project Structure
 
+```text
+car-game-/
+|- game.html
+|- index.html
+|- common.js
+|- common.css
+|- styles/
+|  |- game.css
+|- src/
+|  |- game/
+|     |- config.js
+|     |- state.js
+|     |- track.js
+|     |- traffic.js
+|     |- renderer.js
+|     |- gameplay.js
+|     |- ui.js
+|     |- app.js
+|- images/
+|- music/
+|- v1.straight.html
+|- v2.curves.html
+|- v3.hills.html
+|- v4.final.html
+```
 
-🛠️ Technologies Used
-HTML5 – Structure and layout
+## Local Run
 
-CSS3 – Styling and animations
+1. Clone repository:
+   `git clone https://github.com/sudheerxdev/car-game-.git`
+2. Open `index.html` or directly open `game.html` in your browser.
 
-JavaScript – Game logic and interactions
+No build tools or frameworks are required.
 
-Vanilla JS only – No frameworks
+## License
 
-🎮 Features
-🚘 Player car movement with arrow keys
-
-🚗 Random enemy car generation
-
-⛽ Increasing difficulty with time
-
-💥 Collision detection
-
-🏆 Score tracking
-
-🔁 Game over and restart functionality
-
-🎵 Background music and sound effects (optional)
-
-⌨️ Controls
-⬅️ Left Arrow – Move left
-
-➡️ Right Arrow – Move right
-
-(Add any other controls if applicable)
-
-📁 Project Structure
-bash
-Copy
-Edit
-car-game/
-│
-├── index.html         # Main HTML file
-├── style.css          # Game styling
-├── script.js          # Game logic
-├── assets/            # Images, audio, etc.
-│   ├── car.png
-│   ├── enemy.png
-│   └── crash.mp3
-└── README.md
-🚀 How to Run Locally
-bash
-Copy
-Edit
-git clone https://github.com/sudheerrrrit/car-game.git
-cd car-game
-# Open index.html in your browser
-📜 License
-This project is licensed under the MIT License.
-Feel free to use, modify, and share it.
-
-🙌 Author
-Sudheer yadav 
+MIT License. See `LICENSE`.
