@@ -72,6 +72,3 @@ car-game-/
 
 No build tools or frameworks are required.
 
-## License
-
-MIT License. See `LICENSE`.
