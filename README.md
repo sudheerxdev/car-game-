@@ -22,7 +22,7 @@ If this repository is deployed with GitHub Pages, open:
 - Added car integrity (health) and damage handling
 - Added combo and near-miss scoring mechanics
 - Added dynamic difficulty progression over time
-- Added persistent local records (best score, distance, time, lap)
+- Added persistent local records (best score, distance, time, lap) and a top-five high-score leaderboard
 - Added modern responsive layout and touch controls
 - Kept legacy versions available for comparison
 
@@ -71,4 +71,3 @@ car-game-/
 2. Open `index.html` or directly open `game.html` in your browser.
 
 No build tools or frameworks are required.
-

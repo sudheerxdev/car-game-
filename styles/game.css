@@ -172,6 +172,29 @@ h1 {
   font-size: 0.82rem;
 }
 
+.leaderboard-title {
+  margin-top: 16px !important;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.leaderboard-list {
+  margin: 0;
+  padding-left: 28px;
+  color: var(--muted);
+}
+
+.leaderboard-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 3px 0 3px 4px;
+}
+
+.leaderboard-list strong {
+  color: var(--text);
+}
+
 .panel-actions {
   display: flex;
   gap: 8px;
