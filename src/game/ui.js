@@ -60,6 +60,8 @@
       overlayTitle: Dom.get("overlayTitle"),
       overlayMessage: Dom.get("overlayMessage"),
       overlayButton: Dom.get("overlayButton"),
+      overlayRestartButton: Dom.get("overlayRestartButton"),
+      overlayMenuButton: Dom.get("overlayMenuButton"),
       countdown: Dom.get("countdown"),
       eventFeed: Dom.get("eventFeed"),
       touchButtons: document.querySelectorAll("[data-input]")
@@ -114,7 +116,20 @@
       ns.Gameplay.startRun(state);
     });
 
+    refs.overlayRestartButton.addEventListener("click", function() {
+      ns.Gameplay.restartRun(state);
+    });
+
+    refs.overlayMenuButton.addEventListener("click", function() {
+      window.location.href = "index.html";
+    });
+
     bindTouchControls(state, refs);
+  }
+
+  function setPauseActionsVisible(refs, visible) {
+    refs.overlayRestartButton.className = visible ? "" : "hidden";
+    refs.overlayMenuButton.className = visible ? "" : "hidden";
   }
 
   function renderOverlay(state) {
@@ -122,6 +137,7 @@
     var summary;
 
     if (state.phase === "menu") {
+      setPauseActionsVisible(refs, false);
       refs.overlay.className = "overlay";
       refs.overlayTitle.textContent = "Ready To Race";
       refs.overlayMessage.textContent = "Build your best run by balancing speed, control, and near-miss combos.";
@@ -130,14 +146,16 @@
     }
 
     if (state.phase === "paused") {
+      setPauseActionsVisible(refs, true);
       refs.overlay.className = "overlay";
       refs.overlayTitle.textContent = "Paused";
-      refs.overlayMessage.textContent = "Take your time. Press P or Resume when ready.";
+      refs.overlayMessage.textContent = "Your run is paused. Choose an option to continue.";
       refs.overlayButton.textContent = "Resume";
       return;
     }
 
     if (state.phase === "gameover") {
+      setPauseActionsVisible(refs, false);
       summary = state.summary || { score: 0, distance: 0, time: 0, nearMisses: 0 };
       refs.overlay.className = "overlay";
       refs.overlayTitle.textContent = "Run Over";
@@ -147,6 +165,7 @@
       return;
     }
 
+    setPauseActionsVisible(refs, false);
     refs.overlay.className = "overlay hidden";
   }
 

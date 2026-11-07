@@ -330,6 +330,17 @@ button:hover {
   color: var(--muted);
 }
 
+.overlay-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.overlay-actions .hidden {
+  display: none;
+}
+
 .countdown {
   position: absolute;
   inset: auto 0 44% 0;

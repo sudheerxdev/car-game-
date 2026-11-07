@@ -23,6 +23,7 @@ If this repository is deployed with GitHub Pages, open:
 - Added combo and near-miss scoring mechanics
 - Added dynamic difficulty progression over time
 - Added persistent local records (best score, distance, time, lap) and a top-five high-score leaderboard
+- Added an Esc/P pause overlay with resume, restart, and main selection actions
 - Added modern responsive layout and touch controls
 - Kept legacy versions available for comparison
 
