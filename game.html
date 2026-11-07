@@ -111,11 +111,15 @@
     </section>
 
     <section class="touch-controls" aria-label="Touch controls">
-      <button class="touch-btn" data-input="left" type="button">Left</button>
-      <button class="touch-btn" data-input="right" type="button">Right</button>
-      <button class="touch-btn" data-input="faster" type="button">Gas</button>
-      <button class="touch-btn" data-input="slower" type="button">Brake</button>
-      <button class="touch-btn nitro" data-input="nitro" type="button">Nitro</button>
+      <div class="touch-steering">
+        <button class="touch-btn" data-input="left" type="button" aria-label="Steer left">Left</button>
+        <button class="touch-btn" data-input="right" type="button" aria-label="Steer right">Right</button>
+      </div>
+      <div class="touch-driving">
+        <button class="touch-btn" data-input="faster" type="button" aria-label="Accelerate">Gas</button>
+        <button class="touch-btn" data-input="slower" type="button" aria-label="Brake">Brake</button>
+        <button class="touch-btn nitro" data-input="nitro" type="button" aria-label="Activate nitro">Nitro</button>
+      </div>
     </section>
   </main>
 

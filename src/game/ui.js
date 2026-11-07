@@ -82,6 +82,9 @@
     var downHandler = function(ev) {
       var name = ev.currentTarget.getAttribute("data-input");
       ev.preventDefault();
+      if (ev.currentTarget.setPointerCapture) {
+        ev.currentTarget.setPointerCapture(ev.pointerId);
+      }
       setInput(state, name, true);
     };
 
@@ -96,6 +99,7 @@
       button.addEventListener("pointerup", upHandler);
       button.addEventListener("pointerleave", upHandler);
       button.addEventListener("pointercancel", upHandler);
+      button.addEventListener("lostpointercapture", upHandler);
     });
   }
 

@@ -25,6 +25,7 @@ If this repository is deployed with GitHub Pages, open:
 - Added persistent local records (best score, distance, time, lap) and a top-five high-score leaderboard
 - Added an Esc/P pause overlay with resume, restart, and main selection actions
 - Added engine audio, crash sound effects, background music, and a persistent mute toggle
+- Added mobile touch controls for steering, acceleration, braking, and nitro
 - Added modern responsive layout and touch controls
 - Kept legacy versions available for comparison
 
