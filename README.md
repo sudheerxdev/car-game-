@@ -26,6 +26,7 @@ If this repository is deployed with GitHub Pages, open:
 - Added an Esc/P pause overlay with resume, restart, and main selection actions
 - Added engine audio, crash sound effects, background music, and a persistent mute toggle
 - Added mobile touch controls for steering, acceleration, braking, and nitro
+- Added dynamic sunny, rainy, and foggy weather with visibility and traction effects
 - Added modern responsive layout and touch controls
 - Kept legacy versions available for comparison
 

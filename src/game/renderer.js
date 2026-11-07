@@ -34,7 +34,7 @@
     for (n = 0; n < state.drawDistance; n++) {
       segment = state.segments[(baseSegment.index + n) % state.segments.length];
       segment.looped = segment.index < baseSegment.index;
-      segment.fog = Util.exponentialFog(n / state.drawDistance, state.fogDensity);
+      segment.fog = Util.exponentialFog(n / state.drawDistance, state.weather.fogDensity);
       segment.clip = maxy;
 
       Util.project(
@@ -159,6 +159,24 @@
     var ctx = state.ctx;
     var width = state.width;
     var height = state.height;
+
+    if (state.weather.condition === "rainy") {
+      ctx.fillStyle = "rgba(80, 110, 150, 0.1)";
+      ctx.fillRect(0, 0, width, height);
+      ctx.strokeStyle = "rgba(190, 220, 255, 0.32)";
+      ctx.lineWidth = 1;
+      for (var rain = 0; rain < 80; rain++) {
+        var rainX = (rain * 97 + state.elapsed * 260) % width;
+        var rainY = (rain * 53 + state.elapsed * 430) % height;
+        ctx.beginPath();
+        ctx.moveTo(rainX, rainY);
+        ctx.lineTo(rainX - 5, rainY + 13);
+        ctx.stroke();
+      }
+    } else if (state.weather.condition === "foggy") {
+      ctx.fillStyle = "rgba(210, 220, 225, 0.16)";
+      ctx.fillRect(0, 0, width, height);
+    }
 
     if (state.nitroActive) {
       ctx.fillStyle = "rgba(34, 211, 238, 0.08)";

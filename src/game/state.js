@@ -88,6 +88,27 @@
     return rank;
   }
 
+  function chooseWeather(state, announce) {
+    var conditions = Object.keys(state.config.weather);
+    var nextCondition = conditions[Util.randomInt(0, conditions.length - 1)];
+    var weather = state.config.weather[nextCondition];
+
+    if (conditions.length > 1 && nextCondition === state.weather.condition) {
+      nextCondition = conditions[(conditions.indexOf(nextCondition) + 1) % conditions.length];
+      weather = state.config.weather[nextCondition];
+    }
+
+    state.weather.condition = nextCondition;
+    state.weather.label = weather.label;
+    state.weather.traction = weather.traction;
+    state.weather.fogDensity = weather.fogDensity;
+    state.weather.timer = Util.randomInt(state.config.weatherMinDuration, state.config.weatherMaxDuration);
+    if (announce) {
+      state.eventText = weather.label + " conditions";
+      state.eventTimer = state.config.eventFeedDuration;
+    }
+  }
+
   function recomputeCamera(state) {
     state.cameraDepth = 1 / Math.tan((state.fieldOfView / 2) * Math.PI / 180);
     state.playerZ = state.cameraHeight * state.cameraDepth;
@@ -147,6 +168,8 @@
     state.eventTimer = 0;
     state.damageFlash = 0;
     state.nearMissFlash = 0;
+    state.weather = state.weather || {};
+    chooseWeather(state, false);
 
     state.rank = deriveRank(0, state.config);
   }
@@ -199,6 +222,13 @@
       ui: null
     };
 
+    state.weather = {
+      condition: "sunny",
+      label: "Sunny",
+      traction: 1,
+      fogDensity: config.fogDensity,
+      timer: 0
+    };
     canvas.width = state.width;
     canvas.height = state.height;
 
@@ -217,6 +247,7 @@
     loadRecords: loadRecords,
     persistRecords: persistRecords,
     addLeaderboardEntry: addLeaderboardEntry,
+    chooseWeather: chooseWeather,
     deriveRank: deriveRank
   };
 })(window.ApexRacer = window.ApexRacer || {});

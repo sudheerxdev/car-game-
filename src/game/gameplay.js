@@ -4,6 +4,13 @@
     state.eventTimer = state.config.eventFeedDuration;
   }
 
+  function updateWeather(state, dt) {
+    state.weather.timer -= dt;
+    if (state.weather.timer <= 0) {
+      ns.State.chooseWeather(state, true);
+    }
+  }
+
   function applyDamage(state, amount) {
     state.health = Math.max(0, state.health - amount);
     state.damageFlash = 1;
@@ -181,6 +188,7 @@
 
     state.elapsed += dt;
     updateDifficulty(state);
+    updateWeather(state, dt);
 
     state.trafficAdjustCooldown -= dt;
     if (state.trafficAdjustCooldown <= 0) {
@@ -190,6 +198,7 @@
 
     ns.Traffic.updateCars(state, dt, playerSegment, playerW);
     state.position = Util.increase(state.position, dt * state.speed, state.trackLength);
+    dx *= state.weather.traction;
 
     if (state.input.left) {
       state.playerX -= dx;
