@@ -12,6 +12,12 @@
     state.multiplier = 1;
   }
 
+  function playCrashSound() {
+    if (ns.Sound) {
+      ns.Sound.playCrash();
+    }
+  }
+
   function updateDifficulty(state) {
     var nextLevel = Math.min(
       state.config.maxDifficultyLevel,
@@ -104,6 +110,7 @@
       return;
     }
     state.phase = "gameover";
+    ns.Sound.updateEngine(state);
     state.summary = {
       score: Math.round(state.score),
       distance: state.distance,
@@ -222,6 +229,7 @@
           state.speed = state.maxSpeed / 5;
           state.position = Util.increase(playerSegment.p1.world.z, -state.playerZ, state.trackLength);
           applyDamage(state, state.config.damage.roadsideCollision);
+          playCrashSound();
           break;
         }
       }
@@ -235,6 +243,7 @@
           state.speed = car.speed * (car.speed / Math.max(state.speed, 1));
           state.position = Util.increase(car.z, -state.playerZ, state.trackLength);
           applyDamage(state, state.config.damage.carCollision + state.difficultyLevel);
+          playCrashSound();
           break;
         }
       }
@@ -251,6 +260,7 @@
 
     updateLapStats(state, dt, startPosition);
     updateScoring(state, dt);
+    ns.Sound.updateEngine(state);
 
     if (state.comboTimer > 0) {
       state.comboTimer -= dt;
@@ -279,6 +289,7 @@
   }
 
   function startRun(state) {
+    ns.Sound.init();
     ns.State.resetRunState(state);
     ns.Track.resetRoad(state);
     ns.Traffic.resetTraffic(state);

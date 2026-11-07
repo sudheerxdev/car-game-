@@ -71,7 +71,7 @@
           <button id="restartButton" type="button">Restart</button>
         </div>
         <p class="control-copy">
-          Keyboard: Arrow keys/WASD to drive, Space for nitro, P to pause, R to restart.
+          Keyboard: Arrow keys/WASD to drive, Space for nitro, P or Esc to pause, R to restart.
         </p>
       </aside>
 
@@ -97,12 +97,16 @@
             <p id="overlayMessage">
               Push your score with clean overtakes, near misses, and efficient nitro usage.
             </p>
-            <button id="overlayButton" class="primary-btn" type="button">Start Run</button>
+            <div class="overlay-actions">
+              <button id="overlayButton" class="primary-btn" type="button">Start Run</button>
+              <button id="overlayRestartButton" class="hidden" type="button">Restart</button>
+              <button id="overlayMenuButton" class="hidden" type="button">Main Selection</button>
+            </div>
           </div>
         </div>
 
         <div id="countdown" class="countdown hidden">3</div>
-        <span id="mute" title="Toggle music"></span>
+        <span id="mute" title="Toggle sound" role="button" aria-label="Toggle sound"></span>
       </section>
     </section>
 
@@ -123,6 +127,7 @@
   <script src="common.js"></script>
   <script src="src/game/config.js"></script>
   <script src="src/game/state.js"></script>
+  <script src="src/game/sound.js"></script>
   <script src="src/game/track.js"></script>
   <script src="src/game/traffic.js"></script>
   <script src="src/game/renderer.js"></script>

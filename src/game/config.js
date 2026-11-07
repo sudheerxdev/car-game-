@@ -52,7 +52,7 @@
     slower: [KEY.DOWN, KEY.S],
     nitro: [32],
     start: [13],
-    pause: [80],
+    pause: [80, 27],
     restart: [82]
   };
 
