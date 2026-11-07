@@ -4,7 +4,8 @@
       bestScore: 0,
       bestDistance: 0,
       bestTime: 0,
-      bestLapTime: 0
+      bestLapTime: 0,
+      leaderboard: []
     };
 
     try {
@@ -18,15 +19,63 @@
         bestScore: Util.toInt(parsed.bestScore, 0),
         bestDistance: Util.toFloat(parsed.bestDistance, 0),
         bestTime: Util.toFloat(parsed.bestTime, 0),
-        bestLapTime: Util.toFloat(parsed.bestLapTime, 0)
+        bestLapTime: Util.toFloat(parsed.bestLapTime, 0),
+        leaderboard: loadLeaderboard()
       };
     } catch (err) {
       return fallback;
     }
   }
 
+  function loadLeaderboard() {
+    var raw;
+    var parsed;
+
+    try {
+      raw = Dom.storage[ns.STORAGE_KEYS.leaderboard];
+      parsed = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(parsed)) {
+        return [];
+      }
+
+      return parsed
+        .filter(function(entry) {
+          return entry && typeof entry === "object" && isFinite(Number(entry.score));
+        })
+        .map(function(entry) {
+          return {
+            name: String(entry.name || "Anonymous").slice(0, 24),
+            score: Math.max(0, Util.toInt(entry.score, 0))
+          };
+        })
+        .sort(function(first, second) {
+          return second.score - first.score;
+        })
+        .slice(0, 5);
+    } catch (err) {
+      return [];
+    }
+  }
+
   function persistRecords(records) {
-    Dom.storage[ns.STORAGE_KEYS.records] = JSON.stringify(records);
+    var leaderboard = records.leaderboard || [];
+    Dom.storage[ns.STORAGE_KEYS.records] = JSON.stringify({
+      bestScore: records.bestScore,
+      bestDistance: records.bestDistance,
+      bestTime: records.bestTime,
+      bestLapTime: records.bestLapTime
+    });
+    Dom.storage[ns.STORAGE_KEYS.leaderboard] = JSON.stringify(leaderboard);
+  }
+
+  function addLeaderboardEntry(records, name, score) {
+    records.leaderboard = (records.leaderboard || []).concat([{
+      name: String(name || "Anonymous").slice(0, 24),
+      score: Math.max(0, Util.toInt(score, 0))
+    }]).sort(function(first, second) {
+      return second.score - first.score;
+    }).slice(0, 5);
+    return records.leaderboard;
   }
 
   function deriveRank(score, config) {
@@ -167,6 +216,7 @@
     recomputeCamera: recomputeCamera,
     loadRecords: loadRecords,
     persistRecords: persistRecords,
+    addLeaderboardEntry: addLeaderboardEntry,
     deriveRank: deriveRank
   };
 })(window.ApexRacer = window.ApexRacer || {});

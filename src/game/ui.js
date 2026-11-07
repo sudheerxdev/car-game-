@@ -52,6 +52,7 @@
       bestDistance: Dom.get("best_distance_value"),
       bestTime: Dom.get("best_time_value"),
       bestLap: Dom.get("best_lap_value"),
+      leaderboard: Dom.get("leaderboard_list"),
 
       startButton: Dom.get("startButton"),
       restartButton: Dom.get("restartButton"),
@@ -177,6 +178,20 @@
     refs.bestDistance.textContent = formatDistance(state.records.bestDistance);
     refs.bestTime.textContent = formatClock(state.records.bestTime);
     refs.bestLap.textContent = formatLap(state.records.bestLapTime);
+    refs.leaderboard.innerHTML = "";
+
+    for (var n = 0; n < 5; n++) {
+      var entry = state.records.leaderboard[n];
+      var item = document.createElement("li");
+      var name = document.createElement("span");
+      var score = document.createElement("strong");
+
+      name.textContent = entry ? entry.name : "--";
+      score.textContent = entry ? formatInteger(entry.score) : "--";
+      item.appendChild(name);
+      item.appendChild(score);
+      refs.leaderboard.appendChild(item);
+    }
   }
 
   function renderHud(state) {

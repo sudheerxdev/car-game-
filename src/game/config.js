@@ -60,6 +60,7 @@
   ns.KEYMAP = keyMap;
   ns.STORAGE_KEYS = {
     records: "apex_racer_records_v1",
+    leaderboard: "apex_racer_leaderboard_v1",
     player: "apex_racer_player"
   };
 })(window.ApexRacer = window.ApexRacer || {});

@@ -127,6 +127,7 @@
       }
     }
 
+    ns.State.addLeaderboardEntry(records, state.playerName, state.summary.score);
     ns.State.persistRecords(records);
   }
 
