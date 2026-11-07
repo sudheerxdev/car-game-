@@ -31,6 +31,13 @@
     maxDifficultyLevel: 10,
     countdownSeconds: 3,
     eventFeedDuration: 1.6,
+    weatherMinDuration: 18,
+    weatherMaxDuration: 32,
+    weather: {
+      sunny: { label: "Sunny", traction: 1, fogDensity: 5 },
+      rainy: { label: "Rainy", traction: 0.72, fogDensity: 7 },
+      foggy: { label: "Foggy", traction: 0.95, fogDensity: 14 }
+    },
     damage: {
       carCollision: 24,
       roadsideCollision: 14,

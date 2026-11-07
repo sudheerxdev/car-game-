@@ -37,6 +37,7 @@
       combo: Dom.get("combo_value"),
       level: Dom.get("level_value"),
       lap: Dom.get("lap_value"),
+      weather: Dom.get("weather_value"),
       nitroValue: Dom.get("nitro_value"),
 
       healthFill: Dom.get("health_fill"),
@@ -228,6 +229,7 @@
     refs.combo.textContent = "x" + state.multiplier.toFixed(2);
     refs.level.textContent = String(state.difficultyLevel);
     refs.lap.textContent = String(state.lap);
+    refs.weather.textContent = state.weather.label;
     refs.nitroValue.textContent = String(Math.round(nitroPercent));
 
     refs.healthFill.style.width = healthPercent.toFixed(1) + "%";
