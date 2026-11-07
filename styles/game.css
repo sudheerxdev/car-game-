@@ -378,14 +378,30 @@ button:hover {
 
 .touch-controls {
   display: none;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
+.touch-steering,
+.touch-driving {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.touch-driving {
+  justify-content: flex-end;
+}
+
 .touch-btn {
+  flex: 1;
   min-width: 70px;
+  min-height: 48px;
   padding: 10px 12px;
   border-radius: 10px;
+  touch-action: none;
+  user-select: none;
 }
 
 .touch-btn.nitro {
@@ -416,5 +432,16 @@ button:hover {
 
   .touch-controls {
     display: flex;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .touch-steering,
+  .touch-driving {
+    min-width: 100%;
+  }
+
+  .touch-btn {
+    min-height: 52px;
+    font-size: 1rem;
   }
 }
